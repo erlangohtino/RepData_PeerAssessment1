@@ -80,7 +80,7 @@ The 5-min interval with the maximum number of steps (in average), is number `r m
 
 ## Imputing missing values
 
-Note that there are a number of days/intervals where there are missing values (coded as **NA**. The presence of missing days may introduce bias into some calculations or summaries of the data. The following chunks of code provide the answer to the following instructions:
+Note that there are a number of days/intervals where there are missing values (coded as **NA**). The presence of missing days may introduce bias into some calculations or summaries of the data. The following chunks of code provide the answer to the following instructions:
 
 1. Calculate and report the *total number of missing values* in the dataset (i.e. the total number of rows with NAs)
 2. Devise a *strategy* for filling in all of the missing values in the dataset.
@@ -107,7 +107,7 @@ Note that there are a number of days/intervals where there are missing values (c
 
 ```
 
-The mean of the steps per day, estimating the NA values in the dataset as the mean number of steps corresponding to the corresponding 5-min interval in the day is `r mynewmean` and the median is `r mynewmedian`. They are slightly higher than the original values `r mymean` and `r mymedian`.
+`r mymissing` missing values in dataset. The mean of the steps per day, estimating the NA values in the dataset as the mean number of steps corresponding to the corresponding 5-min interval in the day is `r mynewmean` and the median is `r mynewmedian`. They are slightly higher than the original values `r mymean` and `r mymedian`.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

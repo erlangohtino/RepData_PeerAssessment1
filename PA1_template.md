@@ -120,7 +120,7 @@ Note that there are a number of days/intervals where there are missing values (c
     mynewmedian<-as.integer(median(Newsummary1$total,na.rm=TRUE))
 ```
 
-The mean of the steps per day, estimating the NA values in the dataset as the mean number of steps corresponding to the corresponding 5-min interval in the day is 9530.7244046 and the median is 10439. They are slightly higher than the original values 9354.2295082 and 10395.
+2304 missing values in dataset. The mean of the steps per day, estimating the NA values in the dataset as the mean number of steps corresponding to the corresponding 5-min interval in the day is 9530.7244046 and the median is 10439. They are slightly higher than the original values 9354.2295082 and 10395.
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
