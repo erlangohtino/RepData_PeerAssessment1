@@ -88,7 +88,7 @@ The 5-min interval with the maximum number of steps (in average), is number 835,
 
 ## Imputing missing values
 
-Note that there are a number of days/intervals where there are missing values (coded as **NA**. The presence of missing days may introduce bias into some calculations or summaries of the data. The following chunks of code provide the answer to the following instructions:
+Note that there are a number of days/intervals where there are missing values (coded as **NA**). The presence of missing days may introduce bias into some calculations or summaries of the data. The following chunks of code provide the answer to the following instructions:
 
 1. Calculate and report the *total number of missing values* in the dataset (i.e. the total number of rows with NAs)
 2. Devise a *strategy* for filling in all of the missing values in the dataset.
@@ -103,7 +103,8 @@ Note that there are a number of days/intervals where there are missing values (c
     # Filling in all of missing values with mean steps per interval computed before.
     data2<-data
     data2$steps[is.na(data$steps)]<-
-        summary2$stepsperinterval[summary2$interval==data$interval[is.na(data$steps)]]
+        trunc(summary2$stepsperinterval[match(data$interval[is.na(data$steps)],
+                                              summary2$interval)])
 
     # Summarize the steps per day
     Newsummary1 <- data2 %>% group_by(date) %>% summarize(total=sum(steps,na.rm=TRUE))
@@ -117,10 +118,10 @@ Note that there are a number of days/intervals where there are missing values (c
 ```r
         # Compute the mean and median
     mynewmean<-mean(Newsummary1$total,na.rm=TRUE)
-    mynewmedian<-as.integer(median(Newsummary1$total,na.rm=TRUE))
+    mynewmedian<-median(Newsummary1$total,na.rm=TRUE)
 ```
 
-2304 missing values in dataset. The mean of the steps per day, estimating the NA values in the dataset as the mean number of steps corresponding to the corresponding 5-min interval in the day is 9530.7244046 and the median is 10439. They are slightly higher than the original values 9354.2295082 and 10395.
+2304 missing values in dataset. The mean of the steps per day, estimating the NA values in the dataset as the truncated mean number of steps corresponding to the corresponding 5-min interval in the day is 1.074977\times 10^{4} and the median is 1.0641\times 10^{4}. They are significantly higher than the original values 9354.2295082 and 10395, as more than two thousand records with values in the range of tens to hundreds of steps are newly introduced. 
 
 ## Are there differences in activity patterns between weekdays and weekends?
 

@@ -94,7 +94,8 @@ Note that there are a number of days/intervals where there are missing values (c
     # Filling in all of missing values with mean steps per interval computed before.
     data2<-data
     data2$steps[is.na(data$steps)]<-
-        summary2$stepsperinterval[summary2$interval==data$interval[is.na(data$steps)]]
+        trunc(summary2$stepsperinterval[match(data$interval[is.na(data$steps)],
+                                              summary2$interval)])
 
     # Summarize the steps per day
     Newsummary1 <- data2 %>% group_by(date) %>% summarize(total=sum(steps,na.rm=TRUE))
@@ -103,11 +104,11 @@ Note that there are a number of days/intervals where there are missing values (c
          xlab="Number of steps",breaks=10)
         # Compute the mean and median
     mynewmean<-mean(Newsummary1$total,na.rm=TRUE)
-    mynewmedian<-as.integer(median(Newsummary1$total,na.rm=TRUE))
+    mynewmedian<-median(Newsummary1$total,na.rm=TRUE)
 
 ```
 
-`r mymissing` missing values in dataset. The mean of the steps per day, estimating the NA values in the dataset as the mean number of steps corresponding to the corresponding 5-min interval in the day is `r mynewmean` and the median is `r mynewmedian`. They are slightly higher than the original values `r mymean` and `r mymedian`.
+`r mymissing` missing values in dataset. The mean of the steps per day, estimating the NA values in the dataset as the truncated mean number of steps corresponding to the corresponding 5-min interval in the day is `r mynewmean` and the median is `r mynewmedian`. They are significantly higher than the original values `r mymean` and `r mymedian`, as more than two thousand records with values in the range of tens to hundreds of steps are newly introduced. 
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
