@@ -1,3 +1,3 @@
 ## PeerAssessment1 Pages
 
-[PA1.template.md](PA1.template.md)
+[PA1_template.html](PA1_template.html)
